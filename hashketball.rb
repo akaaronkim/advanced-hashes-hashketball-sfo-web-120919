@@ -246,9 +246,24 @@ end
 
 
 def player_with_longest_name
-  player_with_most_of(:player_name)
+  longest = ''
+  longest_length = 0
+  game_hash.each do |stats, team|
+    team[:player].each do |player|
+      name_length = player[:player_name].longest
+      longest, longest_length = player[:player_name], name_length if name_length > longest_length
+    end
+  end
+  return longest
 end
 
 def long_name_steals_a_ton?
-  player_with_most_of(:steals) == player_with_most_of(:player_name)
+  steals_most = ''
+  most_steals = 0
+  game_hash.each do |stats, team|
+    team:players].each do |player|
+      steals_most, most_steals = player[:player_name], player[:steals] if player[:steals] > most_steals
+    end
+  end
+  return true if steals_most == player_with_longest_name
 end
