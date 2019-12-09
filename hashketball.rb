@@ -226,7 +226,7 @@ def most_points_scored
 end
 
 def winning_team
-  total_home_points = 0 
+  total_home_points = 0
   total_away_points = 0
 
   game_hash.each do |home_away, team|
@@ -238,7 +238,7 @@ def winning_team
           end
         end
       end
-    end 
+    end
   total_home_points
 
     if home_away == :away
@@ -246,10 +246,10 @@ def winning_team
         if attribute == :players
           info.each do |player|
             total_away_points += player[:points]
-          end 
-        end 
-      end 
-    end 
+          end
+        end
+      end
+    end
   total_away_points
 
     if total_home_points > total_away_points
@@ -257,27 +257,27 @@ def winning_team
     else
       return game_hash[:away][:team_name]
     end
-  end 
+  end
 end
 
 def player_with_longest_name
   longest_name_count = 0
   longest_name = ""
-  
+
   game_hash.each do |stats, team|
-    team.each do |attribute, info| 
-      if attribute == :players 
+    team.each do |attribute, info|
+      if attribute == :players
         info.each do |player|
           if player[:player_name].length > longest_name_count
             longest_name_count = player[:player_name].length
             longest_name = player[:player_name]
           end
-        end 
-      end 
-    end 
+        end
+      end
+    end
   end
   longest_name
-end 
+end
 
 def long_name_steals_a_ton?
   highest_steals = 0
@@ -289,12 +289,12 @@ def long_name_steals_a_ton?
           if player[:steals] > highest_steals
             highest_steals = player[:steals]
             player_with_most_steals = player[:player_name]
-          end 
-        end 
-      end 
-    end 
+          end
+        end
+      end
+    end
   end
   player_with_most_steals
 
-  (player_with_most_steals == player_with_longest_name) ? true : false 
-end 
+  (player_with_most_steals == player_with_longest_name) ? true : false
+end
